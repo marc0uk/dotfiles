@@ -1,6 +1,7 @@
-# Dotfiles (Nicolas Gallagher)
+# Dotfiles (Marco Riello)
 
-My OS X dotfiles.
+My OS X dotfiles, based on
+[necolas's amazing repo](https://github.com/necolas/dotfiles).
 
 
 ## How to install
@@ -10,7 +11,7 @@ Tools](https://developer.apple.com/downloads) and may overwrite existing
 dotfiles in your HOME and `.vim` directories.
 
 ```bash
-$ bash -c "$(curl -fsSL raw.github.com/necolas/dotfiles/master/bin/dotfiles)"
+$ bash -c "$(curl -fsSL raw.github.com/marc0uk/dotfiles/master/bin/dotfiles)"
 ```
 
 N.B. If you wish to fork this project and maintain your own dotfiles, you must
@@ -69,9 +70,7 @@ Homebrew formulae:
 * [graphicsmagick](http://www.graphicsmagick.org/)
 * [jpeg](https://en.wikipedia.org/wiki/Libjpeg)
 * [macvim](http://code.google.com/p/macvim/)
-* [node](http://nodejs.org/)
 * [optipng](http://optipng.sourceforge.net/)
-* [phantomjs](http://phantomjs.org/)
 * [rsync](https://rsync.samba.org/) (latest version, rather than the out-dated OS X installation)
 * [tree](http://mama.indstate.edu/users/ice/tree/)
 * [wget](http://www.gnu.org/software/wget/)
