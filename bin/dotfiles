@@ -2,7 +2,7 @@
 
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 DOTFILES_TARBALL_PATH="https://github.com/marc0uk/dotfiles/tarball/master"
-DOTFILES_GIT_REMOTE="git@github.com:necolas/dotfiles.git"
+DOTFILES_GIT_REMOTE="git@github.com:marc0uk/dotfiles.git"
 
 # If missing, download and extract the dotfiles repository
 if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
@@ -48,7 +48,7 @@ done
 # Before relying on Homebrew, check that packages can be compiled
 if ! type_exists 'gcc'; then
     e_error "The XCode Command Line Tools must be installed first."
-    printf "  Download them from: https://developer.apple.com/downloads\n"
+    printf "  Install them (via xcode-select --install)\n"
     printf "  Then run: bash ~/.dotfiles/bin/dotfiles\n"
     exit 1
 fi
