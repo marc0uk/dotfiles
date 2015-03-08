@@ -23,13 +23,12 @@ run_brew() {
             'ack'
             'bash'
             'bash-completion'
-            'ffmpeg'
-            'graphicsmagick'
             'jpeg'
             'macvim --override-system-vim'
-            'optipng'
             'tree'
             'wget'
+            'maven'
+            'subversion'
         )
 
         for index in ${!desired_formulae[*]}
@@ -58,10 +57,10 @@ run_brew() {
         # Remove outdated versions from the Cellar
         brew cleanup
     else
-        printf "\n"
-        e_error "Error: Homebrew not found."
-        printf "Aborting...\n"
-        exit
+        e_header "Installing Homebrew for you."
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        brew tap homebrew/science
+        brew update
     fi
 
 }
