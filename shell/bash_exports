@@ -5,6 +5,9 @@
 # Make vim the default editor
 export EDITOR="vim"
 
+# Make vim the default editor for SVN
+export SVN_EDITOR="vim"
+
 # Ignore duplicate commands in the history
 export HISTCONTROL=ignoredups
 
@@ -22,3 +25,6 @@ export MANPAGER="less -X"
 # Make new shells get the history lines from all previous
 # shells instead of the default "last window closed" history
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+# Set the Java home
+export JAVA_HOME=`/usr/libexec/java_home`
