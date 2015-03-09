@@ -1,0 +1,111 @@
+#!/bin/bash
+#
+# Development environment for DPAC (Data Processing and Analysis Consortium)
+# for the ESA Gaia Mission (http://www.cosmos.esa.int/web/gaia)
+#
+# Location of DPAC commons (soft & docs)
+DPAC_HOME=$HOME/DPAC
+#
+# DPAC SVN
+DPAC_SVN=http://gaia.esac.esa.int/dpacsvn/
+DPAC_TRUNK=$DPAC_SVN/DPAC
+DPAC_BRANCH=$DPAC_SVN/DPAC_branches
+DPAC_TAG=$DPAC_SVN/DPAC_tags
+#
+# COMMONS
+CU1SOFTCOM=$DPAC_HOME/software/cu1common
+CU1DOCCOM=$DPAC_HOME/docs/cu1common
+CU5TEX=$DPAC_HOME/docs/cu5tex
+#
+# Our Documentation tree
+CU5DOCS=$HOME/Documents/Gaia/CU5/SVN
+DPCIDOCS=$HOME/Documents/Gaia/DPCI/SVN
+#
+if [ ! -d $DPAC_HOME ]; then
+    e_header "Setting up DPAC home"
+    mkdir -p $DPAC_HOME
+    mkdir $DPAC_HOME/docs
+    mkdir $DPAC_HOME/software
+    #
+    # Initialising the CU1 software commons
+    e_header "Checking out the CU1 software common"
+    svn checkout $DPAC_TRUNK/CU1/software/common $CU1SOFTCOM > /dev/null
+    if [ $? -eq 0 ]; then
+        e_success "CU1 software commons successfully checked out"
+    else
+        e_error "Failed to checkout CU1 software commons"
+    fi
+    #
+    # Setting up the CU1 documents commons
+    e_header "Checking out CU1 docs common"
+    svn checkout $DPAC_TRUNK/CU1/docs/common $CU1DOCCOM > /dev/null
+    if [ $? -eq 0 ]; then
+        e_success "CU1 docs commons successfully checked out"
+    else
+        e_error "Failed to checkout CU1 software commons"
+    fi
+    #
+    # Setting up the CU5 Tex commons
+    e_header "Checking out CU5 LaTeX templates"
+    svn checkout $DPAC_TRUNK/CU5/docs/TeX $CU5TEX > /dev/null
+    if [ $? -eq 0 ]; then
+        e_success "CU5 docs commons successfully checked out"
+    else
+        e_error "Failed to checkout CU5 docs commons"
+    fi
+fi
+#
+# CU5 documentation repository
+if [ ! -d $CU5DOCS ]; then
+    e_header "Setting up CU5 docs (this will take some time)"
+    mkdir -p $CU5DOCS
+    svn checkout $DPAC_TRUNK/CU5/docs $CU5DOCS/ > /dev/null
+    if [ $? -eq 0 ]; then
+        e_success "CU5 document tree successfully checked-out"
+    else
+        e_error "Failed to checkout the CU5 document tree"
+    fi
+fi
+#
+# DPCI documentation repository
+if [ ! -d $DPCIDOCS ]; then
+    e_header "Setting up DPCI docs (this will take some time)"
+    mkdir -p $DPCIDOCS
+    svn checkout $DPAC_TRUNK/DPCI/docs $DPCIDOCS/ > /dev/null
+    if [ $? -eq 0 ]; then
+        e_success "DPCI document tree successfully checked-out"
+    else
+        e_error "Failed to checkout the DPCI document tree"
+    fi
+fi
+#
+# Generate the DPAC environment for BASH
+TARGET=$HOME/.dotfiles/shell/dpac_exports
+if [ -f $TARGET ]; then
+    e_warn "Overriding the DPAC shell exports"
+fi
+echo << EOF
+#!/bin/bash
+#
+# Location of DPAC commons (soft & docs)
+export DPAC_HOME=$HOME/DPAC
+#
+# DPAC SVN
+export DPAC_SVN=http://gaia.esac.esa.int/dpacsvn/
+export DPAC_TRUNK=$DPAC_SVN/DPAC
+export DPAC_BRANCH=$DPAC_SVN/DPAC_branches
+export DPAC_TAG=$DPAC_SVN/DPAC_tags
+#
+# CU1 Software Commons
+export SOFCOMMON=$DPAC_HOME/software/cu1common
+#
+# DPAC LaTeX Commons
+export DOCCOMMON=$DPAC_HOME/docs/cu1common
+export DPAC_DOCS=$DOCCOMMON/texmf
+export CU5_DOCS=$CU5TEX/
+export BSTINPUTS=$DPAC_DOCS/bibtex/bst:.:$BSTINPUTS
+export TEXINPUTS=.:$DPAC_DOCS/tex//:$CU5_DOCS:$TEXTINPUTS
+export BIBINPUTS=$DPAC_DOCS/bibtex/bib:.:$BIBINPUTS
+#
+# 
+EOF >> $TARGET
