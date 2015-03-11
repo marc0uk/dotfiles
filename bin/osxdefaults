@@ -41,15 +41,38 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeF
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
+# Save to disk (not to iCloud) by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+
+# Trackpad, mouse, keyboard, Bluetooth accessories, and input
+# ----------------------------------------------------------------------
+
+# Trackpad: map bottom right corner to right-click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool false
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool false
+
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 0
+
+# Set language and text formats
+defaults write NSGlobalDomain AppleLanguages -array "en" "it"
+defaults write NSGlobalDomain AppleLocale -string "en_GB@currency=GBP"
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleMetricUnits -bool true
+
+# Set the timezone; see `sudo systemsetup -listtimezones` for other values
+sudo systemsetup -settimezone "Europe/London" > /dev/null
+
 
 # Dock
 # ----------------------------------------------------------------------
 
 # Dock: enable the 2D Dock
-defaults write com.apple.dock no-glass -bool true
+#defaults write com.apple.dock no-glass -bool true
 
 # Dock: position the Dock on the left
-defaults write com.apple.dock orientation left
+#defaults write com.apple.dock orientation left
 
 # Dock: set the icon size of Dock items to 36 pixels
 defaults write com.apple.dock tilesize -int 36
@@ -61,7 +84,7 @@ defaults write com.apple.dock show-process-indicators -bool true
 defaults write com.apple.dock showhidden -bool true
 
 # Dock: don’t animate opening applications
-defaults write com.apple.dock launchanim -bool false
+#defaults write com.apple.dock launchanim -bool false
 
 # Dock: use the scale effect for window minimizing
 defaults write com.apple.dock mineffect scale
@@ -69,6 +92,14 @@ defaults write com.apple.dock mineffect scale
 # Dock: speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
+# Dock: remove the auto-hiding delay
+defaults write com.apple.dock autohide-delay -float 0
+
+# Dock: remove the animation when hiding/showing
+defaults write com.apple.dock autohide-time-modifier -float 0
+
+# Dock: automatically hide and show
+defaults write com.apple.dock autohide -bool true
 
 # Finder
 # ----------------------------------------------------------------------
@@ -89,10 +120,10 @@ defaults write com.apple.finder DisableAllAnimations -bool true
 defaults write com.apple.finder QuitMenuItem -bool true
 
 # Finder: show the ~/Library folder (in OS X Lion)
-chflags nohidden ~/Library
+#chflags nohidden ~/Library
 
 # Finder: show hidden files by default
-defaults write com.apple.finder AppleShowAllFiles -bool true
+#defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # Finder: use list view in all windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
@@ -123,6 +154,21 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Screen
 # ----------------------------------------------------------------------
+# Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+# Bottom left screen corner → Start screen saver
+defaults write com.apple.dock wvous-bl-corner -int 5
+defaults write com.apple.dock wvous-bl-modifier -int 0
 
 # Screen: require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
