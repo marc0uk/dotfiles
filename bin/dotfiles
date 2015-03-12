@@ -128,6 +128,9 @@ mirrorfiles() {
     link "vim"                ".vim"
     link "vim/gvimrc"         ".gvimrc"
     link "vim/vimrc"          ".vimrc"
+    
+    # iTerm won't pick up a dot-prefixed file for whatever reason
+    link "iterm/solarized.dark.itermcolors.txt" "solarized.dark.itermcolors.txt"
 
     e_success "Dotfiles update complete!"
 }
