@@ -26,3 +26,6 @@
 [submodule "vim/bundle/vim-javascript"]
 	path = vim/bundle/vim-javascript
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule "shell/modules/dotdpac"]
+	path = shell/modules/dotdpac
+	url = git://github.com/marc0uk/dotdpac
