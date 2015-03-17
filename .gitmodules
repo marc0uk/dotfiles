@@ -25,4 +25,7 @@
 	url = git://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/vim-javascript"]
 	path = vim/bundle/vim-javascript
+[submodule "shell/modules/dotdpac"]
+	path = shell/modules/dotdpac
+	url = git://github.com/marc0uk/dotdpac.git
 	url = git://github.com/pangloss/vim-javascript.git
