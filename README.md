@@ -245,6 +245,34 @@ using `git submodule update` will update the submodules (that have been
 initialized) in their local repository. N.B This will wipe away any local
 changes made to those submodules.
 
+## Custom shell modules
+
+Custom shell modules are handled as git submodules located in `shell/modules`. 
+Modules can be enabled or disabled during the dotfiles setup process. When a 
+module is enabled, a softlink will be created in `shell/enabled`. 
+The `bash_profile` will only load modules that are *enabled* ignoring the others.
+
+Convenience functions are available to:
+
+* list the available modules together with their status (enabled/disabled)
+* enable a module
+* disable a module
+
+Once the status of a module has been updated the changes will become effective only
+once a new shell is opened.
+
+Each module must define a `load.sh` reponsible for loading the various components of
+the module. This allows each module to control the order in which its components are
+loaded. For consistency each module should follow the following naming and structure
+convention:
+
+* Exports, if any, should be defined in a file with name ending in `_exports`
+* Aliases, if any, should be defined in a file with name ending in `_aliases`
+* Changes to the shell `PATH` should be defined in a file with name ending in `_paths`
+* Functions, if any, should be defined in a directory called `functions` located at 
+  the top-level of the module. Each function should be defined in a file named as
+  the corresponding function (and no extension)
+
 
 ## Acknowledgements
 
