@@ -19,15 +19,8 @@ fi
 # Load a given dotmodule
 load_dotmod() {
     local MODNAME=$1
-    local MODPATH=$DOT_MODS_ACTIVE/$MODNAME
-    local MODLOADER=$$MODPATH/${MODNAME}_load.sh
+    local MODLOADER=$DOT_MODS_ACTIVE/$MODNAME/${MODNAME}_load.sh
     #
-    if [ ! -L $MODPATH ]; then
-	echo ""
-	echo ">>> ERROR: enabled module not found: $MODNAME"
-	echo ""
-	return
-    fi
     if [ ! -f $MODLOADER ]; then
 	echo ""
 	echo ">>> ERROR: $MODNAME is not a valid module"
