@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# List all available shell modules with
+# their activation status
+dotmod_list() {
+    local ALL=$DOT_MODS/*
+    local ACTIVE="*"
+    echo "Dotfiles modules (* are active)"
+    for file in $ALL; do
+	local MODNAME=$(basename $file)
+	if [ -L $DOT_MODS_ACTIVE/$MODNAME ]; then
+	    local MSG="  ${ACTIVE}${MODNAME}"
+	else
+	    local MSG="   $MODNAME"
+	fi
+    done
+}

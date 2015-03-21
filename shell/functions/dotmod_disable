@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# Disable the specified module
+dotmod_disable() {
+    if [ $# -ne 1 ]; then
+	echo ""
+	echo ">>> dotmod_disable must be invoked with a module name"
+	echo ""
+    fi
+    local MODNAME=$1
+    if [ -f $DOT_MODS_ACTIVE/$MODNAME ]; then
+	rm -f $DOT_MODS_ACTIVE/$MODNAME
+	echo ""
+	echo "Module $MODNAME has been disabled: please open a new shell"
+	echo ""
+    fi
+}

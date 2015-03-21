@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# Enable a given module.
+# An error will be reported if the specified
+# module does not exist.
+dotmod_enable() {
+    if [ $# -ne 1 ]; then
+	echo ""
+	echo ">>> dotmod_enable must be invoked with a module name"
+	echo ""
+    fi
+    local MODNAME=$1
+    if [ ! -d $DOT_MODS/$MODNAME ]; then
+	echo ""
+	echo ">>> Requested module does not exist: $MODNAME"
+	echo ""
+    fi
+    ln -sf $DOT_MODS/$MODNAME $DOT_MODS_ACTIVE/$MODNAME
+    if [ $? -ne 0 ]; then
+	echo ""
+	echo ">>> Failed to activate module $MODNAME"
+	echo ""
+    fi
+}
