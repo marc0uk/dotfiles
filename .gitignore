@@ -1,2 +1,4 @@
 vim/.netrwhist
 vim/.viminfo
+shell/enabled/*
+!shell/enabled/readme.md
