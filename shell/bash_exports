@@ -28,3 +28,12 @@ export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # Set the Java home
 export JAVA_HOME=`/usr/libexec/java_home`
+
+# Dotfiles working copy
+export DOT_HOME=$HOME/.dotfiles
+
+# Dotfiles shell modules
+export DOT_MODS=$DOT_HOME/shell/modules
+
+# Enabled Dotfiles shell modules
+export DOT_MODS_ACTIVE=$DOT_HOME/shell/enabled
