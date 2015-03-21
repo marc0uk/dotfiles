@@ -15,6 +15,28 @@ fi
 # are already added to the PATH.
 [ -r $HOME/.dotfilesrc ] && source $HOME/.dotfilesrc;
 
+#
+# Load a given dotmodule
+load_dotmod() {
+    local MODNAME=$1
+    local MODPATH=$DOT_MODS_ACTIVE/$MODNAME
+    local MODLOADER=$$MODPATH/${MODNAME}_load.sh
+    #
+    if [ ! -L $MODPATH ]; then
+	echo ""
+	echo ">>> ERROR: enabled module not found: $MODNAME"
+	echo ""
+	return
+    fi
+    if [ ! -f $MODLOADER ]; then
+	echo ""
+	echo ">>> ERROR: $MODNAME is not a valid module"
+	echo ""
+	return
+    fi
+    source $MODLOADER
+}
+
 load_dotfiles() {
     declare -a files=(
         $HOME/.rvm/scripts/rvm # Load RVM into a shell session *as a function*
@@ -35,7 +57,17 @@ load_dotfiles() {
             source ${files[$index]}
         fi
     done
+
+    # load all enabled shell modules
+    for mod in $DOT_MODS_ACTIVE/*; do
+	if [ -d $mod ]; then
+	    local modname=$(basename $mod)
+	    load_dotmod $modname
+	fi
+    done
 }
 
 load_dotfiles
 unset load_dotfiles
+unset load_dotmod
+
