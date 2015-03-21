@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Create a path if it does not exist
+mkd() {
+    if [ ! -d $1 ]; then
+	mkdir -p $1
+    fi
+}

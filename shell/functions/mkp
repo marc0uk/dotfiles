@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Create the parent of the specified path
+# if it does not exist
+mkp() {
+    local PARENT=$(dirname $1)
+    if [ ! -d $PARENT ]; then
+	mkdir -p $PARENT
+    fi
+}
