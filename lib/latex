@@ -3,6 +3,10 @@
 # Attempt to install LaTeX if it is not present
 run_latex() {
     if type_exists 'latex'; then
+	if ! type_exists 'wget'; then
+	    e_error "Cannot install LaTeX since wget is not available"
+	    exit 1
+	fi
 	# Attempt to update LaTeX
 	e_header "Checking if LaTeX needs updating:"
 	tlmgr update --list
