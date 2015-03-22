@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# Attempt to install LaTeX if it is not present
+run_latex() {
+    if type_exists 'latex'; then
+	# Attempt to update LaTeX
+	e_header "Checking if LaTeX needs updating:"
+	tlmgr update --list
+	#
+	seek_confirmation "Would you like to proceed with the update?"
+	if is_confirmed; then
+	    tlmgr update --self --all
+	else
+	    printf "Aborting LaTeX update...\n"
+	fi
+    else
+	# Attempt to install LaTeX
+	local TEX_PKG=/tmp/MacTeX.pkg
+	wget -O /tmp/$TEX_PKG http://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg
+	open $TEX_PKG
+	seek_confirmation "Have you completed the installation of MacTeX ?"
+	if is_confirmed; then
+	    e_success "Done"
+	else
+	    printf "Aborting installation of LaTeX\n"
+	fi
+	rm -f $TEX_PKG
+    fi
+}
