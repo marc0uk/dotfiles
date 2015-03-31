@@ -1,7 +1,6 @@
 #!/bin/bash
 
 run_brew() {
-
     # Check for Homebrew
     if type_exists 'brew'; then
         e_header "Updating Homebrew..."
@@ -57,10 +56,6 @@ run_brew() {
         # Remove outdated versions from the Cellar
         brew cleanup
     else
-        e_header "Installing Homebrew for you."
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        brew tap homebrew/science
-        brew update
+	e_error "I cannot find homebrew... what have you done to me beer?"
     fi
-
 }
