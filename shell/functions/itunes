@@ -1,12 +1,14 @@
 #!/bin/bash
 #
-####################################
-# iTunes Command Line Control v1.0
-# written by David Schlosnagle
-# created 2001.11.08
-####################################
-
+# Wrapped as function based on the article:
+# http://hints.macworld.com/article.php?story=20011108211802830
+#
 itunes() {
+    ####################################
+    # iTunes Command Line Control v1.0
+    # written by David Schlosnagle
+    # created 2001.11.08
+    ####################################
     if [ $# = 0 ]; then
 	showHelp;
     fi
