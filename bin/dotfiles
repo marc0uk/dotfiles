@@ -161,7 +161,10 @@ fi
 seek_confirmation "Warning: This step may modify your OS X system defaults."
 
 if is_confirmed; then
+    e_header "Updading your OS X defaults..."
     bash ./bin/osxdefaults
+    e_header "Setting up TimeMachine..."
+    bash ./bin/timemachine
     e_success "OS X settings updated! You may need to restart."
 else
     printf "Skipped OS X settings update.\n"

@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# Set custom OS X defaults
+# See: http://www.macworld.com/article/2033804/control-time-machine-from-the-command-line.html
+#
+# Set the destination
+sudo tmutil setdestination Data
+
+#
+# Disable retention of local snapshots when the remote backup disk is unreachable
+sudo tmutil disablelocal
+
+#
+# Configure exclusion
+sudo tmutil addexclusion ~/Downloads
+sudo tmutil addexclusion ~/Copy
+sudo tmutil addexclusion ~/Dropbox
+sudo tmutil addexclusion ~/.m2/repository
+
+#
+# Enable the backups
+sudo tmutil enable
