@@ -21,6 +21,7 @@ run_latex() {
 	# Attempt to install LaTeX
 	local TEX_PKG=/tmp/MacTeX.pkg
 	wget -O /tmp/$TEX_PKG http://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg
+	e_header "Opening $TEL_PKG: once opened please install"
 	open $TEX_PKG
 	seek_confirmation "Have you completed the installation of MacTeX ?"
 	if is_confirmed; then

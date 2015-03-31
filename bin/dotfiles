@@ -22,6 +22,7 @@ source ./lib/help
 source ./lib/list
 source ./lib/utils
 source ./lib/brew
+source ./lib/latex
 
 # Help text
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
