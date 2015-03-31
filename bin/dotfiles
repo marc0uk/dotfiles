@@ -41,6 +41,7 @@ for opt in $@
 do
     case $opt in
         --no-packages) no_packages=true ;;
+	--no-latex) no_latex=true;;
         --no-sync) no_sync=true ;;
         -*|--*) e_warning "Warning: invalid option $opt" ;;
     esac
@@ -94,11 +95,19 @@ fi
 
 # Install and update packages
 if [[ $no_packages ]]; then
-    printf "Skipped package installations.\n"
+    printf "Skipped package installation/update.\n"
 else
-    printf "Updating packages...\n"
+    printf "Updating homebrew packages...\n"
     # Install Homebrew formulae
     run_brew
+fi
+
+if [[ $no_latex ]]; then
+    printf "Skipped LaTeX package installation/update.\n"
+else
+    printf "Updating LaTeX packages...\n"
+    # Install LaTeX packages
+    run_latex
 fi
 
 link() {
