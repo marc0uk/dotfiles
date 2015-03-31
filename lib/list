@@ -11,26 +11,21 @@ Additional software to install
 Browsers:
     Firefox
     Google Chrome
-    Opera
 
 Development:
-    Filezilla
     iTerm 2
-    ImageAlpha
-    ImageOptim
-    VirtualBox
-    XAMPP
+    Eclipse
+    Intellij
+    SourceTree
+    Emacs
+    XQuartz
 
 Other:
-    Alfred
-    Divvy
     Dropbox
-    Flux
-    KeePassX
-    LimeChat
-    Network Connect
+    Copy
+    LightPaper
     Skype
-    uTorrent
+    Twitter
     VLC
 EOT
 
