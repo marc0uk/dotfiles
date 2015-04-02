@@ -49,10 +49,16 @@ done
 
 # Before relying on Homebrew, check that packages can be compiled
 if ! type_exists 'gcc'; then
-    e_error "The XCode Command Line Tools must be installed first."
-    printf "  Install them (via xcode-select --install)\n"
-    printf "  Then run: bash ~/.dotfiles/bin/dotfiles\n"
-    exit 1
+    e_header "It looks like GCC is missing but you really need it, so now I'll install it for you"
+    xcode-select --install
+else
+    # This will trigger the auto-install on Yosemite
+    gcc_ver=`gcc --version`
+    if [ $? -ne 0 ]; then
+	read -p "Installing the command line tools, press [enter] when done " -n 1
+	printf "\n"
+	e_success "Your are proudly running on $gcc_ver"
+    fi
 fi
 
 # Check for Homebrew
