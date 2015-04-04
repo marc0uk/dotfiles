@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# Download and install XQuartz
+install_xquartz() {
+    local QUARTZ=XQuartz-2.7.7.dmg
+    local DMG=/tmp/$QUARTZ
+    local ORIG=https://xquartz-dl.macosforge.org/SL/$QUARTZ
+    #
+    e_header "Downloading ${QUARTZ}..."
+    curl $ORIG -o $DMG
+    e_header "Opening $QUARTZ: once opened please install"
+    open $DMG
+    read -p "press [enter] when done " -n 1
+    printf "\n"
+    e_success "Done"
+    rm -f $DMG
+}
