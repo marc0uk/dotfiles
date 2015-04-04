@@ -3,10 +3,6 @@
 # Attempt to install LaTeX if it is not present
 run_latex() {
     if type_exists 'latex'; then
-	if ! type_exists 'wget'; then
-	    e_error "Cannot install LaTeX since wget is not available"
-	    exit 1
-	fi
 	# Attempt to update LaTeX
 	e_header "Checking if LaTeX needs updating:"
 	tlmgr update --list
@@ -19,6 +15,10 @@ run_latex() {
 	fi
     else
 	# Attempt to install LaTeX
+	if ! type_exists 'wget'; then
+	    e_error "Cannot install LaTeX since wget is not available"
+	    exit 1
+	fi
 	local TEX_PKG=/tmp/MacTeX.pkg
 	wget -O /tmp/$TEX_PKG http://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg
 	e_header "Opening $TEL_PKG: once opened please install"
