@@ -3,7 +3,7 @@
 run_help() {
 
 cat <<EOT
-OS X dotfiles - Marco Riello via @necolas - http://nicolasgallagher.com/
+OS X dotfiles - Marco Riello inspired by @necolas - http://nicolasgallagher.com/
 
 Usage: $(basename "$0") [options]
 
