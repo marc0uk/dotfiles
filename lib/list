@@ -1,67 +1,46 @@
 #!/bin/bash
 
+__check_app() {
+    local APP=$1
+    local SITE=$2
+    ls -d /Applications/*${APP}* > /dev/null 2&>1
+    if [ $? -ne 0 ]; then
+	e_header "Manual installation of $APP required"
+	open $SITE
+    else
+	e_header "$APP appears to be installed"
+    fi
+}
+
 run_list() {
+    e_header "Checking for installed apps..."
     #
     # If Google Chrome is not installed it means we still have to perform
     # the manual installation of the main Apps.
-    open -a "Google Chrome"
-    if [ $? -ne 0 ]; then
-	#
-	e_header "Opening all the web sites of the stuff to install manually"
-	#
-	# XQuartz
-	open http://xquartz.macosforge.org/landing/
-	#
-	# Emacs
-	open http://emacsformacosx.com/
-	#
-	# Firefox
-	open https://www.mozilla.org/en-GB/firefox/new/
-	#
-	# Chrome
-	open http://www.google.com/chrome/
-	#
-	# iTerm2
-	open https://iterm2.com/
-	#
-	# Eclipse
-	open https://eclipse.org
-	#
-	# IntelliJ
-	open https://www.jetbrains.com/idea/
-	#
-	# SourceTree
-	open http://www.sourcetreeapp.com/
-	# 
-	# DropBox
-	open https://www.dropbox.com
-	#
-	# Copy
-	open https://www.copy.com
-	#
-	# LightPaper
-	open http://www.ashokgelal.com/lightpaper-for-mac/
-	#
-	# VLC
-	open https://www.videolan.org/index.html
-	#
-	# Now notify about what to get from the App Store
-	echo;
-	echo "Additional software to install from the App Store"
-	echo;
-	echo "  Twitter"
-	echo "  Auction Buyers Bidding Snipe timer"
-	echo "  Living Earth"
-	echo;
-	seek_confirmation "Have you completed the manual installation ?"
-	if is_confirmed then;
-	    e_success "All extras have been manually installed"
-	else
-	    e_warning "It is not a good idea to skip this step."
-	    read -p "Type (enter) to continue"
-	    printf "\n"
-	fi
+    #
+    # Browsers
+    __check_app Chrome http://www.google.com/chrome/
+    __check_app Firefox https://www.mozilla.org/en-GB/firefox/new/
+    #
+    # Development
+    __check_app Eclipse https://eclipse.org
+    __check_app IntelliJ https://www.jetbrains.com/idea/
+    __check_app SourceTree http://www.sourcetreeapp.com/
+    #
+    # Editors
+    __check_app Emacs http://emacsformacosx.com/
+    __check_app LightPaper http://www.ashokgelal.com/lightpaper-for-mac/
+    #
+    # Utilities
+    __check_app iTerm https://iterm2.com/
+    __check_app DropBox https://www.dropbox.com
+    __check_app Copy https://www.copy.com
+    __check_app VLC https://www.videolan.org/index.html
+    #
+    seek_confirmation "Have you completed the manual installation ?"
+    if is_confirmed then;
+	e_success "Cheers mate"
     else
-	e_header "It appears you already have performed the manual installation step"
+	e_header "No worries"
     fi
 }
