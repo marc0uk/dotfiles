@@ -1,7 +1,7 @@
 # Dotfiles (Marco Riello)
 
 My OS X dotfiles, based on
-[necolas's amazing repo](https://github.com/necolas/dotfiles).
+[necolas's amazing repo](https://github.com/necolas/dotfiles). This originally started as a fork but then it reached the point where it had grown a life of its own and the relationship with the original repository was no longer relevant.
 
 
 ## How to install
