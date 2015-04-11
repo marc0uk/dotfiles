@@ -98,7 +98,7 @@ fi
 if [[ $no_sync ]]; then
     printf "Skipped dotfiles sync.\n"
 else
-    e_header "Syncing dotfiles..."
+    e_header "Synching dotfiles..."
     # Pull down the latest changes
     git pull --rebase origin master
     # Update submodules
