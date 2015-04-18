@@ -65,8 +65,10 @@ fi
 # Check for Homebrew
 if ! type_exists 'brew'; then
     #
-    # If Homebrew is missing we assume XQuartz is not installed either
-    install_xquartz
+    # If Homebrew is missing maybe XQuartz is not installed either
+    if [ ! -d /ApplicationsXQuartz.app ]; then
+	install_xquartz
+    fi
     #
     # Now it is safe to install Homebrew
     e_header "Installing Homebrew..."
