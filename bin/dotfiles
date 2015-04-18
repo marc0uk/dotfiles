@@ -70,7 +70,7 @@ if ! type_exists 'brew'; then
     #
     # Now it is safe to install Homebrew
     e_header "Installing Homebrew..."
-    ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Check for git
