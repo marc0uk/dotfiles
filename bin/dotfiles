@@ -48,13 +48,10 @@ do
     esac
 done
 
-if [ ! -d /Applications/Xcode.app ]; then
-    xcode-select --install
-fi
-
 # Before relying on Homebrew, check that packages can be compiled
 if ! type_exists 'gcc'; then
     e_header "It looks like GCC is missing but you really need it, so now I'll install it for you"
+    e_header "Be careful and make sure you install Xcode as well"
     xcode-select --install
 else
     # This will trigger the auto-install on Yosemite
