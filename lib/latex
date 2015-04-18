@@ -20,7 +20,8 @@ run_latex() {
 	    exit 1
 	fi
 	local TEX_PKG=/tmp/MacTeX.pkg
-	wget -O /tmp/$TEX_PKG http://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg
+	e_header "Attempting to download LaTeX Live package..."
+	wget -O $TEX_PKG http://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg
 	e_header "Opening $TEL_PKG: once opened please install"
 	open $TEX_PKG
 	seek_confirmation "Have you completed the installation of MacTeX ?"
