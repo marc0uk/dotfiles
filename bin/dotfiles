@@ -65,7 +65,7 @@ else
 fi
 
 # Let's make sure Java is installed
-__jjvv=$(java --version)
+__jjvv=$(java -version)
 read -p "If you got some funky message about Java, make sure it is installed" -n 1
 printf "\n"
 e_header "You quite possibly have java $__jjvv"
