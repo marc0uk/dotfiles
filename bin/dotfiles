@@ -64,6 +64,10 @@ else
     fi
 fi
 
+# Let's make sure Java is installed
+__jjvv=$(java --version)
+e_header "You quite possibly have java $__jjvv"
+
 # Check for Homebrew
 if ! type_exists 'brew'; then
     #
