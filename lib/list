@@ -38,7 +38,7 @@ run_list() {
     __check_app VLC https://www.videolan.org/index.html
     #
     seek_confirmation "Have you completed the manual installation ?"
-    if is_confirmed then;
+    if is_confirmedi; then
 	e_success "Cheers mate"
     else
 	e_header "No worries"
