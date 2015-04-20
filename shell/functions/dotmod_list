@@ -13,5 +13,6 @@ dotmod_list() {
 	else
 	    local MSG="   $MODNAME"
 	fi
+	echo $MSG
     done
 }
