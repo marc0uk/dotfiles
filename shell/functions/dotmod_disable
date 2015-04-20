@@ -6,6 +6,7 @@ dotmod_disable() {
 	echo ""
 	echo ">>> dotmod_disable must be invoked with a module name"
 	echo ""
+	return
     fi
     local MODNAME=$1
     if [ -f $DOT_MODS_ACTIVE/$MODNAME ]; then

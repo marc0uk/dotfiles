@@ -8,12 +8,14 @@ dotmod_enable() {
 	echo ""
 	echo ">>> dotmod_enable must be invoked with a module name"
 	echo ""
+	return
     fi
     local MODNAME=$1
     if [ ! -d $DOT_MODS/$MODNAME ]; then
 	echo ""
 	echo ">>> Requested module does not exist: $MODNAME"
 	echo ""
+	return
     fi
     ln -sf $DOT_MODS/$MODNAME $DOT_MODS_ACTIVE/$MODNAME
     if [ $? -ne 0 ]; then
