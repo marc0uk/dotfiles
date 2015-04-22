@@ -102,6 +102,8 @@ if ! is_git_repo; then
     git reset --hard FETCH_HEAD
     # Remove any untracked files
     git clean -fd
+    #
+    git branch --set-upstream-to=origin/master master
 fi
 
 # Conditionally sync with the remote repository
