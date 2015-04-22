@@ -97,6 +97,7 @@ itunes() {
 	    
             "help" | *) echo "help:";
 		__showHelp
+		break;;
 	esac
     done
 }
