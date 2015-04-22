@@ -4,10 +4,11 @@
 # http://hints.macworld.com/article.php?story=20011108211802830
 #
 __showHelp () {
+    local app=`basename $0`
     echo "-----------------------------";
     echo "iTunes Command Line Interface";
     echo "-----------------------------";
-    echo "Usage: `basename $0` <option>";
+    echo "Usage: `$app` <option>";
     echo;
     echo "Options:";
     echo " status   = Shows iTunes' status, current artist and track.";
