@@ -273,7 +273,7 @@ and structure convention:
   the top-level of the module. Each function should be defined in a file named as
   the corresponding function (and no extension)
 * Modules can assume the availability of all the functions provided by this `dot files` project
-  and the console utilities in [blob/master/lib/utils](utils) file.
+  and the console utilities in [utils](blob/master/lib/utils) file.
 
 ## Acknowledgements
 
