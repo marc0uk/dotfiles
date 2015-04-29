@@ -261,10 +261,10 @@ Convenience functions are available to:
 Once the status of a module has been updated the changes will become effective only
 once a new shell is opened.
 
-Each module must define a `load.sh` reponsible for loading the various components of
-the module. This allows each module to control the order in which its components are
-loaded. For consistency each module should follow the following naming and structure
-convention:
+Each `MODNAME` module must define a `load_MODNAME.sh` reponsible for loading the 
+various components of the module. This allows each module to control the order in which 
+its components are loaded. For consistency each module should follow the following naming
+and structure convention:
 
 * Exports, if any, should be defined in a file with name ending in `_exports`
 * Aliases, if any, should be defined in a file with name ending in `_aliases`
@@ -272,7 +272,8 @@ convention:
 * Functions, if any, should be defined in a directory called `functions` located at 
   the top-level of the module. Each function should be defined in a file named as
   the corresponding function (and no extension)
-
+* Modules can assume the availability of all the functions provided by this `dot files` project
+  and the console utilities in [lib/utils](util) file.
 
 ## Acknowledgements
 

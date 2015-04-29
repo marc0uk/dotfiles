@@ -22,23 +22,23 @@ load_dotmod() {
     local MODLOADER=$DOT_MODS_ACTIVE/$MODNAME/${MODNAME}_load.sh
     #
     if [ ! -f $MODLOADER ]; then
-	echo ""
-	echo ">>> ERROR: $MODNAME is not a valid module"
-	echo ""
+	e_error ">>> ERROR: $MODNAME is not a valid module"
 	return
     fi
     source $MODLOADER
 }
 
 load_dotfiles() {
+    local DF=$HOME/.dotfiles
     declare -a files=(
+	$DF/lib/utils
         $HOME/.rvm/scripts/rvm # Load RVM into a shell session *as a function*
-        $HOME/.dotfiles/shell/bash_options # Options
-        $HOME/.dotfiles/shell/bash_exports # Exports
-        $HOME/.dotfiles/shell/bash_aliases # Aliases
-        $HOME/.dotfiles/shell/functions/* # Functions
-        $HOME/.dotfiles/shell/bash_prompt # Custom bash prompt
-        $HOME/.dotfiles/shell/bash_paths # Path modifications
+        $DF/shell/bash_options # Options
+        $DF/shell/bash_exports # Exports
+        $DF/shell/bash_aliases # Aliases
+        $DF/shell/functions/* # Functions
+        $DF/shell/bash_prompt # Custom bash prompt
+        $DF/shell/bash_paths # Path modifications
         $(brew --prefix)/etc/bash_completion # Bash completion (installed via Homebrew)
         $HOME/.bash_profile.local # Local and private settings not under version control (e.g. git credentials)
     )
