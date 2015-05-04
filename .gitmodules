@@ -28,4 +28,4 @@
 	url = git://github.com/pangloss/vim-javascript.git
 [submodule "shell/modules/dotdpac"]
 	path = shell/modules/dotdpac
-	url = git://github.com/marc0uk/dotdpac
+	url = https://github.com/marc0uk/dotdpac.git
