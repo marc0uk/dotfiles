@@ -11,6 +11,9 @@ alias ...="cd ../.."
 alias ~="cd ~"
 alias -- -="cd -"
 
+# Delete emacs backup files
+alias no="rm -f .*~ *~ > /dev/null 2>&1"
+
 # List dir contents aliases
 # ref: http://ss64.com/osx/ls.html
 # Long form no user group, color
