@@ -28,7 +28,8 @@ run_brew() {
             'wget'
             'maven'
             'subversion'
-	    'postgresql'
+            'postgresql'
+            'htop'
         )
 
         for index in ${!desired_formulae[*]}
