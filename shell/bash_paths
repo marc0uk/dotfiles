@@ -11,6 +11,7 @@ declare -a dirs_to_prepend=(
 declare -a dirs_to_append=(
     "/usr/bin"
     "$HOME/bin"
+    "$HOME/anaconda3/bin"
     "$HOME/.dotfiles/bin"
     "$HOME/.rvm/bin"
     "$(brew --prefix coreutils)/libexec/gnubin" # Add brew-installed GNU core utilities bin
