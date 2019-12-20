@@ -23,7 +23,7 @@ run_brew() {
             'bash'
             'bash-completion'
             'jpeg'
-            'macvim --with-override-system-vim'
+            'macvim -- --with-override-system-vim'
             'tree'
             'wget'
             'maven'
